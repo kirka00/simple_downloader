@@ -6,35 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>601</width>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 14px</string>
+   </property>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
-      <width>271</width>
+      <x>40</x>
+      <y>20</y>
+      <width>481</width>
       <height>191</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="1">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>&lt;- ссылка на видео</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QComboBox" name="comboBox"/>
-     </item>
-     <item row="1" column="1">
+     <item row="2" column="1">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>&lt;- Выбор кодека</string>
@@ -42,9 +44,93 @@
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="link"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="down_btn">
+       <property name="text">
+        <string>Скачать</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="answer">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>&lt;-Куда скачивать (путь)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>&lt;- ссылка на видео</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>&lt;- Качество</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLineEdit" name="path">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QComboBox" name="quality"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QComboBox" name="codec"/>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="play_btn">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>250</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Медиаплеер</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="play_text">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>240</y>
+      <width>311</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;- Можно посмотреть скаченные файлы</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -52,12 +138,24 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>601</width>
      <height>26</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Итсория</string>
+    </property>
+    <addaction name="history_downloads"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="history_downloads">
+   <property name="text">
+    <string>История скачиваний</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
