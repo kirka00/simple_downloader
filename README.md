@@ -4,9 +4,9 @@ ____
 https://bouncy-cornflower-ac6.notion.site/Simple-Downloader-1ac0f486fccb4e0ab348c0e6f95d9ce5
 ____
 Чтобы приложение работало стабильно, нужно установить:
-https://www.videohelp.com/software/LAV-Filters (для кодеков)
-https://www.codecguide.com/ (для их воспроизведения)
-https://youtu.be/ObuBysxtv9M (туториал по установке ffmpeg для перекодирования в нужный кодек)
+- https://www.videohelp.com/software/LAV-Filters (для кодеков)
+- https://www.codecguide.com/ (для их воспроизведения)
+- https://youtu.be/ObuBysxtv9M (туториал по установке ffmpeg для перекодирования в нужный кодек)
 p.s. При заполнении кжша при многочисленных скачиваниях помогает команда: youtube-dl --rm-cache-dir
 ____
 - [=] обработка клавиатуры (во всех окнах)
