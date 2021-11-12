@@ -52,14 +52,18 @@ class Player(QMainWindow, Ui_MainWindow):
         self.playlistView.selectionModel().selectionChanged.connect(
             self.playlistView_changed)
 
+    def closeEvent(self, event):
+        self.player.pause
+
     def open_f(self):  # открытие файла
         path = QFileDialog.getOpenFileName(  # запоминаем путь
             self, "Выбрать файл", "", "mp3 Audio (*.mp3);mp4 Video \
             (*.mp4);aac Audio (*.aac);m4a Audio (*.m4a);wav Audio (*.wav);Все файлы (*.*)")[0]
 
         if path:  # проверка (вдруг ничего не выбрано)
-            self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(path)))
+            print(self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(path))))
         self.projects.layoutChanged.emit()  # обновление
+
         
     # обновление самого слайдера (т. к. изменятется длительность файла)
     def update_duration(self, duration):
@@ -69,6 +73,8 @@ class Player(QMainWindow, Ui_MainWindow):
         if arg:  # фикс (IndexError: list index out of range)
             self.playlist.setCurrentIndex(arg.indexes()[0].row())
 
+        
+
     def update_position(self, position):  # изменение позиции ползунка на слайдере
         self.time_slide.blockSignals(True)  # сначала True, потом False
         # но между меняется позиция ползунка на слайдере
@@ -77,6 +83,7 @@ class Player(QMainWindow, Ui_MainWindow):
 
     def playlist_changed(self, arg):  # смена проекта в интерфейсе 
         self.playlistView.setCurrentIndex(self.projects.index(arg))
+
 
     def viewer(self):  # видеопросмотр
         self.view = ViewerWindow()

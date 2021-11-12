@@ -1,1 +1,1 @@
-[[true, "test"]]
+[[true, "test"], [true, "\u041e\u0431\u0435\u0434"]]
