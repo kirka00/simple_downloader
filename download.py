@@ -1,7 +1,6 @@
-from __future__ import unicode_literals
 import youtube_dl
 import os
-from PyQt5 import uic
+from qt.downloader_qt import Ui_MainWindow
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore import Qt
 from play import Player
@@ -18,11 +17,12 @@ D:/op
 Чистка кэша:
 youtube-dl --rm-cache-dir
 '''
+
 ''' Окно загрузки '''
-class DowloaderWindow(QMainWindow):
+class DowloaderWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('downloader.ui', self)
+        self.setupUi(self)
         self.setWindowTitle('Загрузчик')
         self.codec.addItems(  # кодеки
             ['aac', 'm4a', 'mp3', 'mp4', 'wav'])
@@ -55,6 +55,7 @@ class DowloaderWindow(QMainWindow):
                 quality = 'worstaudio/worst'
             ydl_opts = {  # опции загрузки для аудиофрмата
                 'format': self.quality.currentText(),
+                'noplaylist': True,
                 'postprocessors': [{
                     'key': 'FFmpegExtractAudio',
                     'preferredcodec': codec,
@@ -69,6 +70,7 @@ class DowloaderWindow(QMainWindow):
                 quality = 'worstvideo/worst'
             ydl_opts = {  # опции загрузки для видеоформата
                 'format': self.quality.currentText(),
+                'noplaylist': True,
                 'preferredcodec': codec,
                 'progress_hooks': [self.my_hook],
                 'outtmpl': path + '/%(title)s.%(ext)s',

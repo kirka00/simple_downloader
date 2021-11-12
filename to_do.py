@@ -1,4 +1,4 @@
-from PyQt5 import uic
+from qt.to_do_qt import Ui_MainWindow
 from PyQt5.QtGui import QImage
 from PyQt5.QtCore import QAbstractListModel, Qt
 from PyQt5.QtWidgets import QMainWindow
@@ -18,17 +18,17 @@ class TodoModel(QAbstractListModel):  # структура данных моде
 
         if role == Qt.DecorationRole:  # метка выполненной задачи
             if self.todo[index.row()][0]:  # если True, то отметка в виде галочки
-                return QImage('tick.png')
+                return QImage('image/tick.png')
 
     def rowCount(self, arg):  # фикс (NotImplementedError: QAbstractListModel.rowCount()
         # is abstract and must be overridden)
         return len(self.todo)
 
 
-class To_do_list(QMainWindow):
+class To_do_list(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('to_do.ui', self)
+        self.setupUi(self)
         self.setWindowTitle('Планировщик')
 
         self.tasks = TodoModel()  # объект от TodoModel

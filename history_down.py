@@ -1,13 +1,13 @@
 import sqlite3
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
 from PyQt5.QtCore import Qt
-from PyQt5 import uic
+from qt.history_downloads_qt import Ui_Form
 
 ''' Вывод БД в таблице '''
-class DB_down(QMainWindow):
+class DB_down(QMainWindow, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('history_downloads.ui', self)
+        self.setupUi(self)
         self.setWindowTitle('История задач')
         self.connection = sqlite3.connect("DB_simple.db")
         self.select_data()

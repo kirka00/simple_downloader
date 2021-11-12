@@ -113,7 +113,7 @@
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>Файл</string>
+     <string>Открыть нужный файл</string>
     </property>
     <addaction name="open_file"/>
    </widget>
@@ -122,7 +122,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="open_file">
    <property name="text">
-    <string>Открыть файл</string>
+    <string>Выбор файла</string>
    </property>
   </action>
  </widget>

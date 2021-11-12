@@ -1,8 +1,8 @@
 import sys
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QTime, QTimer, Qt
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QIcon, QPixmap
+from qt.main_window import Ui_MainWindow
 
 # модули с классами
 from download import DowloaderWindow  # загрузчик
@@ -11,18 +11,19 @@ from to_do import To_do_list  # планировщик
 from play import Player  # медиаплеер
 
 ''' Главное окно '''
-class MainWindow(QMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main_window.ui', self)
-        self.setWindowTitle('Главная страница')
+        self.setupUi(self)
+        self.setWindowTitle('Главаня страница | Simple Downloader')
         self.browser_btn.clicked.connect(self.browser_view)  # браузер
         self.downloader_btn.clicked.connect(self.downloader_view)  # загрузчик
         self.to_do_btn.clicked.connect(self.to_do_view)  # планировщик
         self.player_btn.clicked.connect(self.player_view)  # медиаплеер
 
+
         self.setStyleSheet(
-            '.QWidget {background-image: url(background.jpg)}')  # фон
+            '.QWidget {background-image: url(image/background.jpg)}')  # фон
 
         ''' Время '''
         time = QTimer(self)  # создание объекта от QTimer
@@ -39,7 +40,7 @@ class MainWindow(QMainWindow):
         self.downloader = DowloaderWindow()
         self.downloader.show()
 
-    def to_do_view(self):  # планировщик
+    def to_do_view(self):  # планировщик 
         self.to_do = To_do_list()
         self.to_do.show()
 
@@ -71,6 +72,7 @@ def except_hook(cls, exception, traceback):  # обработка ошибок
 ''' Запуск '''
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon('image/icon.png'))
     ex = MainWindow()
     ex.show()
     sys.excepthook = except_hook
